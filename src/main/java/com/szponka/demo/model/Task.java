@@ -30,7 +30,57 @@ public class Task {
   private TaskStatus taskStatus;
 
 
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public LocalDate getDueTime() {
+    return dueTime;
+  }
+
+  public void setDueTime(LocalDate dueTime) {
+    this.dueTime = dueTime;
+  }
+
+  public int getProjectId() {
+    return projectId;
+  }
+
+  public void setProjectId(int projectId) {
+    this.projectId = projectId;
+  }
+
+  public Assignee getAssignee() {
+    return assignee;
+  }
+
+  public void setAssignee(Assignee assignee) {
+    this.assignee = assignee;
+  }
+
+  public TaskStatus getTaskStatus() {
+    return taskStatus;
+  }
+
+  public void setTaskStatus(TaskStatus taskStatus) {
+    this.taskStatus = taskStatus;
+  }
+
   public Task() {
+
+
   }
 }
 

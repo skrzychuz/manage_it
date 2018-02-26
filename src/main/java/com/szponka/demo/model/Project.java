@@ -49,14 +49,19 @@ public class Project {
   public void setDescription(String description) {
     this.description = description;
   }
-//
-//  public List<Task> getTaskList() {
-//    return taskList;
-//  }
-//
-//  public void setTaskList(List<Task> taskList) {
-//    this.taskList = taskList;
-//  }
+
+  public List<Task> getTaskList() {
+    return taskList;
+  }
+
+  public void setTaskList(List<Task> taskList) {
+    this.taskList = taskList;
+  }
+
+  public void addTaskToProject(Task task) {
+    this.taskList.add(task);
+  }
+
 }
 
 

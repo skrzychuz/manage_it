@@ -16,10 +16,9 @@ public class Assignee {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private int id;
-  private int projectId;
   private String name;
-  @OneToMany(mappedBy = "id", cascade = CascadeType.ALL)
-  private List<Task> taskList;
+//  @OneToMany(mappedBy = "id", cascade = CascadeType.ALL)
+//  private List<Task> taskList;
 
   public Assignee() {
   }
@@ -40,13 +39,13 @@ public class Assignee {
     this.name = name;
   }
 
-  public List<Task> getTaskList() {
-    return taskList;
+//  public List<Task> getTaskList() {
+//    return taskList;
+//  }
+//
+//  public void setTaskList(List<Task> taskList) {
+//    this.taskList = taskList;
   }
 
-  public void setTaskList(List<Task> taskList) {
-    this.taskList = taskList;
-  }
 
 
-}
