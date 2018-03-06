@@ -1,5 +1,7 @@
 package com.szponka.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -12,22 +14,25 @@ import javax.persistence.OneToOne;
 import java.time.LocalDate;
 
 @Entity
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Task {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
   private String name;
   private LocalDate dueTime;
-  private int projectId;
 
-  @OneToOne(fetch = FetchType.EAGER)
+  @OneToOne(fetch = FetchType.EAGER, cascade=CascadeType.MERGE)
   @JoinColumn(name = "assigneeId")
   private Assignee assignee;
 
-  @OneToOne(fetch = FetchType.EAGER)
+  @OneToOne(fetch = FetchType.EAGER, cascade=CascadeType.MERGE)
   @JoinColumn(name = "statusId")
   private TaskStatus taskStatus;
+
+  public Task() {
+  }
 
 
   public int getId() {
@@ -54,14 +59,6 @@ public class Task {
     this.dueTime = dueTime;
   }
 
-  public int getProjectId() {
-    return projectId;
-  }
-
-  public void setProjectId(int projectId) {
-    this.projectId = projectId;
-  }
-
   public Assignee getAssignee() {
     return assignee;
   }
@@ -78,9 +75,6 @@ public class Task {
     this.taskStatus = taskStatus;
   }
 
-  public Task() {
 
-
-  }
 }
 

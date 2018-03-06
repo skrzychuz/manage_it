@@ -10,9 +10,12 @@ import javax.persistence.Table;
 public class TaskStatus {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
   private String name;
+
+  public TaskStatus() {
+  }
 
   public TaskStatus(String name) {
     this.name = name;
@@ -32,5 +35,37 @@ public class TaskStatus {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+  @Override
+  public String toString() {
+    return "TaskStatus{" +
+        "id=" + id +
+        ", name='" + name + '\'' +
+        '}';
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+
+    TaskStatus that = (TaskStatus) o;
+
+    if (id != that.id) {
+      return false;
+    }
+    return name != null ? name.equals(that.name) : that.name == null;
+  }
+
+  @Override
+  public int hashCode() {
+    int result = id;
+    result = 31 * result + (name != null ? name.hashCode() : 0);
+    return result;
   }
 }

@@ -22,7 +22,7 @@ public class RepositoryImpl {
   // PROJECT
 
   public void saveProject(Project project) {
-    entityManager.persist(project);
+    entityManager.merge(project);
   }
 
   public Project getProject(int id) {
@@ -32,7 +32,7 @@ public class RepositoryImpl {
   // TASK
 
   public void saveTask(Task task) {
-    entityManager.persist(task);
+    entityManager.merge(task);
   }
 
   public Task getTask(int id) {
@@ -42,6 +42,8 @@ public class RepositoryImpl {
   public List<Task> getTaskList() {
     return entityManager.createQuery("from Task", Task.class)
         .getResultList();
+
+
   }
 
   // ASSIGNEE
@@ -62,10 +64,15 @@ public class RepositoryImpl {
   // TASK STATUS
 
   public void saveTaskStatus(TaskStatus taskStatus) {
-    entityManager.persist(taskStatus);
+    entityManager.merge(taskStatus);
   }
 
   public TaskStatus getTaskStatus(int id) {
     return entityManager.find(TaskStatus.class, id);
+  }
+
+  public List<TaskStatus> getTaskStatusList() {
+    return entityManager.createQuery("from TaskStatus", TaskStatus.class)
+        .getResultList();
   }
 }

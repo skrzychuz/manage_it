@@ -1,5 +1,6 @@
 package com.szponka.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,14 +12,13 @@ import javax.persistence.Table;
 import java.util.List;
 
 @Entity
+//@JsonIgnoreProperties(ignoreUnknown = true)
 public class Assignee {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
   private String name;
-//  @OneToMany(mappedBy = "id", cascade = CascadeType.ALL)
-//  private List<Task> taskList;
 
   public Assignee() {
   }
@@ -39,13 +39,40 @@ public class Assignee {
     this.name = name;
   }
 
-//  public List<Task> getTaskList() {
-//    return taskList;
-//  }
-//
-//  public void setTaskList(List<Task> taskList) {
-//    this.taskList = taskList;
+  @Override
+  public String toString() {
+    return "Assignee{" +
+        "id=" + id +
+        ", name='" + name + '\'' +
+        '}';
   }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+
+    Assignee assignee = (Assignee) o;
+
+    if (id != assignee.id) {
+      return false;
+    }
+    return name != null ? name.equals(assignee.name) : assignee.name == null;
+  }
+
+  @Override
+  public int hashCode() {
+    int result = id;
+    result = 31 * result + (name != null ? name.hashCode() : 0);
+    return result;
+  }
+
+}
+
 
 
 
