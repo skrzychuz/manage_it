@@ -25,7 +25,7 @@ public class Model {
         .filter(task -> id == null || task.getId() == id)
         .filter(task -> name == null || task.getName().equals(name))
         .filter(task -> dueTime == null || task.getDueTime().isEqual(dueTime))
-        .filter(task -> assignee == null || task.getAssignee().getId() == assignee.getId())
+        .filter(task -> assignee == null || task.getAssignee().getName().equals(assignee.getName()))
         .filter(task -> taskStatus == null || task.getTaskStatus().getName()
             .equals(taskStatus.getName()))
         .collect(Collectors.toList());

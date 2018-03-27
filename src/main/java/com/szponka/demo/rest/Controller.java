@@ -46,9 +46,9 @@ public class Controller {
     assignee2.setName("Stefan");
     assignee3.setName("Bonifacy");
 
-    repository.saveAssignee(assignee1);
-    repository.saveAssignee(assignee2);
-    repository.saveAssignee(assignee3);
+//    repository.saveAssignee(assignee1);
+//    repository.saveAssignee(assignee2);
+//    repository.saveAssignee(assignee3);
 
     Task task1 = new Task();
     Task task2 = new Task();
@@ -69,9 +69,9 @@ public class Controller {
     TaskStatus taskStatus2 = new TaskStatus("InProgress");
     TaskStatus taskStatus3 = new TaskStatus("Done");
 
-    repository.saveTaskStatus(taskStatus1);
-    repository.saveTaskStatus(taskStatus2);
-    repository.saveTaskStatus(taskStatus3);
+//    repository.saveTaskStatus(taskStatus1);
+//    repository.saveTaskStatus(taskStatus2);
+//    repository.saveTaskStatus(taskStatus3);
 
     task1.setTaskStatus(taskStatus1);
     task2.setTaskStatus(taskStatus3);
@@ -85,17 +85,17 @@ public class Controller {
 
     List<Task> helperList = new ArrayList<>();
 
-//    helperList.add(task1);
-//    helperList.add(task2);
-//    helperList.add(task3);
-//    helperList.add(task4);
+    helperList.add(task1);
+    helperList.add(task2);
+    helperList.add(task3);
+    helperList.add(task4);
 
     project1.setTaskList(helperList);
-
-    project1.addTaskToProject(task1);
-    project1.addTaskToProject(task2);
-    project1.addTaskToProject(task3);
-    project1.addTaskToProject(task4);
+//
+//    project1.addTaskToProject(task1);
+//    project1.addTaskToProject(task2);
+//    project1.addTaskToProject(task3);
+//    project1.addTaskToProject(task4);
 
 //    repository.saveTask(task1);
 //    repository.saveTask(task2);
@@ -126,7 +126,8 @@ public class Controller {
   @RequestMapping(value = "/addTask", method = RequestMethod.POST)
   public Task addTask(@RequestBody Task task) {
     repository.saveTask(task);
-    return task;
+
+    return repository.getTaskList().get(repository.getTaskList().size()-1);
   }
 
   @RequestMapping(value = "/addAssignee", method = RequestMethod.POST)
@@ -141,7 +142,7 @@ public class Controller {
   @RequestMapping(value = "/addAssignee1", method = RequestMethod.POST)
   public Assignee addAssigne1(@RequestBody Assignee assignee) {
     repository.saveAssignee(assignee);
-    return assignee;
+    return repository.getAssigneeList().get(repository.getAssigneeList().size()-1);
   }
 
   @RequestMapping(value = "/getStatuses", method = RequestMethod.GET)

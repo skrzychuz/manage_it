@@ -75,6 +75,15 @@ public class Task {
     this.taskStatus = taskStatus;
   }
 
-
+  @Override
+  public String toString() {
+    return "Task{" +
+        "id=" + id +
+        ", name='" + name + '\'' +
+        ", dueTime=" + dueTime +
+        ", assignee=" + assignee +
+        ", taskStatus=" + taskStatus +
+        '}';
+  }
 }
 

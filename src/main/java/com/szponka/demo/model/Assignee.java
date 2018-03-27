@@ -2,6 +2,7 @@ package com.szponka.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,11 +19,14 @@ public class Assignee {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
+//  @Column(unique = true)
   private String name;
 
   public Assignee() {
   }
-
+  public Assignee(String name) {
+    this.name = name;
+  }
   public int getId() {
     return id;
   }

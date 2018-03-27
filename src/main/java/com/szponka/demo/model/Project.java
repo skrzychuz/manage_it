@@ -67,6 +67,15 @@ public class Project {
     this.taskList.add(task);
   }
 
+  @Override
+  public String toString() {
+    return "Project{" +
+        "id=" + id +
+        ", name='" + name + '\'' +
+        ", description='" + description + '\'' +
+        ", taskList=" + taskList +
+        '}';
+  }
 }
 
 

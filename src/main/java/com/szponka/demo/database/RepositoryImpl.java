@@ -4,16 +4,19 @@ import com.szponka.demo.model.Assignee;
 import com.szponka.demo.model.Project;
 import com.szponka.demo.model.Task;
 import com.szponka.demo.model.TaskStatus;
+import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+//import javax.transaction.Transactional;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
+
 import java.util.List;
 
-@Repository
 @Transactional
+@Repository
 public class RepositoryImpl {
 
   @PersistenceContext
@@ -32,6 +35,7 @@ public class RepositoryImpl {
   // TASK
 
   public void saveTask(Task task) {
+
     entityManager.merge(task);
   }
 
@@ -49,7 +53,7 @@ public class RepositoryImpl {
   // ASSIGNEE
 
   public void saveAssignee(Assignee assignee) {
-    entityManager.persist(assignee);
+    entityManager.merge(assignee);
   }
 
   public Assignee getAssignee(int id) {
