@@ -46,10 +46,6 @@ public class Controller {
     assignee2.setName("Stefan");
     assignee3.setName("Bonifacy");
 
-//    repository.saveAssignee(assignee1);
-//    repository.saveAssignee(assignee2);
-//    repository.saveAssignee(assignee3);
-
     Task task1 = new Task();
     Task task2 = new Task();
     Task task3 = new Task();
@@ -69,10 +65,6 @@ public class Controller {
     TaskStatus taskStatus2 = new TaskStatus("InProgress");
     TaskStatus taskStatus3 = new TaskStatus("Done");
 
-//    repository.saveTaskStatus(taskStatus1);
-//    repository.saveTaskStatus(taskStatus2);
-//    repository.saveTaskStatus(taskStatus3);
-
     task1.setTaskStatus(taskStatus1);
     task2.setTaskStatus(taskStatus3);
     task3.setTaskStatus(taskStatus2);
@@ -91,16 +83,6 @@ public class Controller {
     helperList.add(task4);
 
     project1.setTaskList(helperList);
-//
-//    project1.addTaskToProject(task1);
-//    project1.addTaskToProject(task2);
-//    project1.addTaskToProject(task3);
-//    project1.addTaskToProject(task4);
-
-//    repository.saveTask(task1);
-//    repository.saveTask(task2);
-//    repository.saveTask(task3);
-//    repository.saveTask(task4);
 
     repository.saveProject(project1);
 
@@ -133,8 +115,6 @@ public class Controller {
   @RequestMapping(value = "/addAssignee", method = RequestMethod.POST)
   public List<Assignee> addAssignee(@RequestBody Assignee assignee) {
 
-//    Assignee assignee = new Assignee();
-//    assignee.setName(name);
     repository.saveAssignee(assignee);
     return repository.getAssigneeList();
   }
@@ -151,7 +131,7 @@ public class Controller {
   }
 
 
-  @RequestMapping(value = "/getTask123", method = RequestMethod.GET)
+  @RequestMapping(value = "/getTaskList", method = RequestMethod.GET)
   public List<Task> getfilteredTask(
       @RequestParam(required = false)  Long id,
       @RequestParam(required = false)  String name,
@@ -162,59 +142,3 @@ public class Controller {
     return model.filterTask(id, name, dueTime, assignee, taskStatus);
   }
 }
-
-//
-//  @RequestMapping(value = "/getTicket", method = RequestMethod.GET)
-//  public Ticket getTicket(@RequestParam(value = "ID") int id) {
-//
-//    LOGGER.log(Level.INFO, "TicketController/getTicket");
-//
-//    return repo.getTicket(id);
-//  }
-//
-//  @RequestMapping(value = "/listTicketsByProject", method = RequestMethod.GET)
-//  public List<Ticket> listTicketsByProject(@RequestParam(value = "projectId") int projectId) {
-//
-//    LOGGER.log(Level.INFO, "TicketController/listTicketsByProject");
-//
-//    return repo.listTicketsByProject(projectId);
-//  }
-//
-//  @RequestMapping(value = "/addTicketPriority", method = RequestMethod.POST)
-//  public TicketPriority addTicketPriority(@RequestParam(value = "name") String name,
-//      @RequestParam(value = "order") int order) {
-//
-//    LOGGER.log(Level.INFO, "TicketController/addTicketPriority");
-//
-//    TicketPriority ticketPriority = new TicketPriority();
-//    ticketPriority.setName(name);
-//    ticketPriority.setPriorityOrder(order);
-//
-//    repo.saveTicketPriority(ticketPriority);
-//
-//    return ticketPriority;
-//  }
-//
-//  @RequestMapping(value = "/getTicketPriorities", method = RequestMethod.GET)
-//  public List<TicketPriority> getTicketPriorities() {
-//
-//    LOGGER.log(Level.INFO, "TicketController/getTicketPriorities");
-//
-//    return repo.listProrities();
-//  }
-//  @RequestMapping(value = "/addTask", method = RequestMethod.POST)
-//  public void saveAll(@RequestBody Invoice invoice) throws Exception {
-//    invoice.completeInvoice();
-//    invoiceBookDatabase.addInvoices(invoice);
-//  }
-
-//
-//  @RequestMapping(value = "/invoices/{id}", method = RequestMethod.GET)
-//  public Invoice getInvoicesById(@PathVariable int id) throws Exception {
-//    return invoiceBookDatabase.getInvoices()
-//        .stream()
-//        .filter(invoice -> invoice.getId() == id)
-//        .findFirst()
-//        .orElse(null);
-//  }
-//}
